@@ -28,17 +28,17 @@ public class XlogStater {
     };
 
     public static String activityState(Object instance, Object[] args) {
-        if (instance == null || !(instance instanceof Activity)) {
-            return "{}";
+        com.mijack.Xlog.logStaticMethodEnter("java.lang.String cn.XlogStater.activityState(java.lang.Object,[java.lang.Object)",instance,args);try{if (instance == null || !(instance instanceof Activity)) {
+            {com.mijack.Xlog.logStaticMethodExit("java.lang.String cn.XlogStater.activityState(java.lang.Object,[java.lang.Object)");return "{}";}
         }
         Activity activity = (Activity) instance;
-        return activityDetailState(activity);
+        {com.mijack.Xlog.logStaticMethodExit("java.lang.String cn.XlogStater.activityState(java.lang.Object,[java.lang.Object)");return activityDetailState(activity);}}catch(Throwable throwable){com.mijack.Xlog.logStaticMethodExitWithThrowable("java.lang.String cn.XlogStater.activityState(java.lang.Object,[java.lang.Object)",throwable);throw throwable;}
     }
 
     public static String activityDetailState(Activity activity) {
-        StringBuilder sb = new StringBuilder();
+        com.mijack.Xlog.logStaticMethodEnter("java.lang.String cn.XlogStater.activityDetailState(android.app.Activity)",activity);try{StringBuilder sb = new StringBuilder();
         sb.append("{");
-//        int i=0;
+/*//        int i=0;*/
         Field[] declaredFields = activity.getClass().getDeclaredFields();
         for (int i = 0; declaredFields != null && i < declaredFields.length; i++) {
             if (i != 0) {
@@ -56,23 +56,23 @@ public class XlogStater {
         }
 
         sb.append("}");
-        return sb.toString();
+        {com.mijack.Xlog.logStaticMethodExit("java.lang.String cn.XlogStater.activityDetailState(android.app.Activity)");return sb.toString();}}catch(Throwable throwable){com.mijack.Xlog.logStaticMethodExitWithThrowable("java.lang.String cn.XlogStater.activityDetailState(android.app.Activity)",throwable);throw throwable;}
     }
 
     public static String widgetState(Object instance, Object[] args) {
-        if (args == null
+        com.mijack.Xlog.logStaticMethodEnter("java.lang.String cn.XlogStater.widgetState(java.lang.Object,[java.lang.Object)",instance,args);try{if (args == null
                 || args.length != 1
                 || args[0] == null
                 || !(args[0] instanceof View)
                 ) {
-            return "{}";
+            {com.mijack.Xlog.logStaticMethodExit("java.lang.String cn.XlogStater.widgetState(java.lang.Object,[java.lang.Object)");return "{}";}
         }
         View view = (View) args[0];
         if (view.getContext() == null || !(view.getContext() instanceof Activity)) {
-            return "{}";
+            {com.mijack.Xlog.logStaticMethodExit("java.lang.String cn.XlogStater.widgetState(java.lang.Object,[java.lang.Object)");return "{}";}
         }
         Activity activity = (Activity) view.getContext();
-        return activityDetailState(activity);
+        {com.mijack.Xlog.logStaticMethodExit("java.lang.String cn.XlogStater.widgetState(java.lang.Object,[java.lang.Object)");return activityDetailState(activity);}}catch(Throwable throwable){com.mijack.Xlog.logStaticMethodExitWithThrowable("java.lang.String cn.XlogStater.widgetState(java.lang.Object,[java.lang.Object)",throwable);throw throwable;}
     }
 
     public enum StateMethodType {
@@ -91,25 +91,25 @@ public class XlogStater {
     }
 
     public static StateMethodType getStateType(Member method) {
-        if (method == null) {
-            return StateMethodType.NO_LOG;
+        com.mijack.Xlog.logStaticMethodEnter("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)",method);try{if (method == null) {
+            {com.mijack.Xlog.logStaticMethodExit("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)");return StateMethodType.NO_LOG;}
         }
         if (Activity.class.isAssignableFrom(method.getDeclaringClass())) {
             for (String methodSign : ACTIVITY_LIFECYCLE_METHOD_LIST) {
                 if (method.toString().endsWith(methodSign)) {
-                    return StateMethodType.ACTIVITY;
+                    {com.mijack.Xlog.logStaticMethodExit("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)");return StateMethodType.ACTIVITY;}
                 }
             }
-            return StateMethodType.NO_LOG;
+            {com.mijack.Xlog.logStaticMethodExit("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)");return StateMethodType.NO_LOG;}
         }
         if (View.OnClickListener.class.isAssignableFrom(method.getDeclaringClass())) {
             for (String methodSign : WIDGET_CLICK_METHOD_LIST) {
                 if (method.toString().endsWith(methodSign)) {
-                    return StateMethodType.ON_CLICK;
+                    {com.mijack.Xlog.logStaticMethodExit("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)");return StateMethodType.ON_CLICK;}
                 }
             }
-            return StateMethodType.NO_LOG;
+            {com.mijack.Xlog.logStaticMethodExit("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)");return StateMethodType.NO_LOG;}
         }
-        return StateMethodType.NO_LOG;
+        {com.mijack.Xlog.logStaticMethodExit("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)");return StateMethodType.NO_LOG;}}catch(Throwable throwable){com.mijack.Xlog.logStaticMethodExitWithThrowable("StateMethodType cn.XlogStater.getStateType(java.lang.reflect.Member)",throwable);throw throwable;}
     }
 }

@@ -27,7 +27,7 @@ public class MainActivity extends Activity implements IStatable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        com.mijack.Xlog.logMethodEnter("void cn.mijack.demo.MainActivity.onCreate(android.os.Bundle)",this,savedInstanceState);try{super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
@@ -36,11 +36,11 @@ public class MainActivity extends Activity implements IStatable {
         Clicker clicker = new Clicker(state, result);
         button.setOnClickListener(clicker);
         button2.setOnClickListener(clicker);
-        button3.setOnClickListener(clicker);
+        button3.setOnClickListener(clicker);com.mijack.Xlog.logMethodExit("void cn.mijack.demo.MainActivity.onCreate(android.os.Bundle)",this);}catch(Throwable throwable){com.mijack.Xlog.logMethodExitWithThrowable("void cn.mijack.demo.MainActivity.onCreate(android.os.Bundle)",this,throwable);throw throwable;}
     }
 
     @Override
     public String getState() {
-        return state.toString();
+        com.mijack.Xlog.logMethodEnter("java.lang.String cn.mijack.demo.MainActivity.getState()",this);try{com.mijack.Xlog.logMethodExit("java.lang.String cn.mijack.demo.MainActivity.getState()",this);return state.toString();}catch(Throwable throwable){com.mijack.Xlog.logMethodExitWithThrowable("java.lang.String cn.mijack.demo.MainActivity.getState()",this,throwable);throw throwable;}
     }
 }

@@ -22,22 +22,22 @@ public class Clicker implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        com.mijack.Xlog.logMethodEnter("void cn.Clicker.onClick(android.view.View)",this,view);try{switch (view.getId()) {
             case R.id.button:
                 state.append("a");
                 result.setText(state.toString());
-                return;
+                {com.mijack.Xlog.logMethodExit("void cn.Clicker.onClick(android.view.View)",this);return;}
             case R.id.button2:
                 state.append("b");
                 result.setText(state.toString());
-                return;
+                {com.mijack.Xlog.logMethodExit("void cn.Clicker.onClick(android.view.View)",this);return;}
             case R.id.button3:
                 if ("ab".equals(state.toString())) {
                     Toast.makeText(view.getContext(), "通过不测试", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(view.getContext(), "通过测试", Toast.LENGTH_SHORT).show();
                 }
-                return;
-        }
+                {com.mijack.Xlog.logMethodExit("void cn.Clicker.onClick(android.view.View)",this);return;}
+        }}catch(Throwable throwable){com.mijack.Xlog.logMethodExitWithThrowable("void cn.Clicker.onClick(android.view.View)",this,throwable);throw throwable;}
     }
 }
